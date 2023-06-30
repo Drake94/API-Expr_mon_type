@@ -12,6 +12,8 @@ route.post('/resultado', verify.verifyToken, verify.isMedic, result.addResultado
 
 route.get('/resultado', result.getResultado)
 
+route.get('/resultado/:_id', result.getResultadoById)
+
 route.get('/resultado/:rut', result.getResultadoByRut)
 
 route.delete('/resultado/:_id', verify.verifyToken, verify.isMedic, result.deleteResultado)

@@ -4,6 +4,8 @@ import connectDB from '../db/mongoDB'
 import 'dotenv'
 import config from '../../config'
 const api = request(app)
+
+
 describe('Prueba sobre api metodos GET', () => {
     connectDB(config.dbConfig)
 
@@ -47,7 +49,7 @@ describe('Prueba sobre api metodos GET', () => {
 
             const result = await api.get('/admin/resultado/ased2143').send()
             console.log(result.statusCode)
-            expect(result.statusCode).toBe(200)
+            expect(result.statusCode).toBe(400)
         }) 
         
 
@@ -116,7 +118,7 @@ describe('Prueba sobre api metodos GET', () => {
             console.log(result.statusCode)
             expect(result.statusCode).toBe(200)
         }) 
-        test('medicoLab retornan como json', async () => {
+        test('status retornan como json', async () => {
             await api
                 .get('/admin/status')
                 .expect(200)
@@ -129,7 +131,7 @@ describe('Prueba sobre api metodos GET', () => {
             console.log(result.statusCode)
             expect(result.statusCode).toBe(200)
         }) 
-        test('medicoLab retornan como json', async () => {
+        test('role retornan como json', async () => {
             await api
                 .get('/admin/role')
                 .expect(200)

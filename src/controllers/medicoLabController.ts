@@ -99,14 +99,10 @@ async function getMedicoLab (req: Request, res: Response) {
 async function getMedicoLabByRut (req: Request, res: Response) {
     /*find()= consulta. */
     const medicolabfound = await MedicoLab.find({rut: req.params.rut })
-    if(!medicolabfound  ){
-
+    if(!Array.isArray(medicolabfound) || medicolabfound.length === 0){
         res.status(404).send("No encontrado")
-
     }else{
-
         res.status(200).send({ medicolabfound })
-        
     }
     
 }
@@ -120,9 +116,9 @@ async function updateMedicoLabById (req: Request, res: Response) {
 
 async function deleteMedicoLab (req: Request, res: Response) {
     
-        const medicolabFoun = await MedicoLab.findOne({rut: req.params.rut })
-        console.log(medicolabFoun)
-        if(!medicolabFoun){
+        const medicolabFound = await MedicoLab.findOne({rut: req.params.rut })
+        console.log(medicolabFound)
+        if(!Array.isArray(medicolabFound) || medicolabFound.length === 0){
 
             res.status(404).send("No encontrado")
 
@@ -141,7 +137,7 @@ async function medicoLogin (req: Request, res: Response) {
     const userFound = await MedicoLab.findOne({correo: req.body.correo})
     if(!userFound)
         return res.status(400).send('Usuario o clave incorrecto')
-    //comprueba si la clave sea correcta, ademas de desencriptarla
+    //comprueba si la clave sea correcta, además de desencriptarla
     const matchPasswords = bcrypt.compareSync(req.body.clave, userFound.clave)
     if(!matchPasswords)
         return res.status(401).send('Clave o usuario incorrecto')

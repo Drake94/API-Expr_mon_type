@@ -2,7 +2,7 @@
 //17/05/2023
 //diegoo@acl.cl
 
-import {Schema, SchemaDefinitionProperty, model} from 'mongoose';
+import {Schema, model} from 'mongoose';
 //Describe las estructura de la propiedades
 
 export interface PacienteI{

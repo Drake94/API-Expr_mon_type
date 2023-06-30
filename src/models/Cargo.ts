@@ -1,7 +1,7 @@
 //Diego Ortega
 //09/06/2023
 //dortega@acl.cl
-import {Schema, SchemaDefinitionProperty, model} from 'mongoose';
+import {Schema, model} from 'mongoose';
 //Describe las estructura de la propiedades
 
 export interface CargoI{

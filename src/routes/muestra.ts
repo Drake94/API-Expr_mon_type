@@ -12,6 +12,8 @@ route.post('/muestra',verify.verifyToken, verify.isTens, sample.addMuestra)
 
 route.get('/muestra', sample.getMuestra)
 
+route.get('/muestraporrevisar', sample.getMuestraPorRevisar)
+
 route.get('/muestra/:rut', sample.getMuestraByRut)
 
 export default { route }

@@ -37,11 +37,24 @@ async function getResultado (req:Request, res:Response) {
 
     const resultado = await Resultado.find().lean().exec()
     res.status(200).send({ resultado })
+
 }
 
 async function getResultadoByRut (req:Request, res:Response) {
 
     const resultadofound = await Resultado.find({rutPatient: req.params.rut }).lean().exec()
+    res.status(200).send({ resultadofound })
+    if(!Array.isArray(resultadofound) || resultadofound.length === 0){
+        res.status(404).send("No encontrado")
+    }else{
+        res.status(200).send({ resultadofound })
+    }
+
+}
+
+async function getResultadoById (req:Request, res:Response) {
+
+    const resultadofound = await Resultado.find({_id: req.params._id}).lean().exec()
     res.status(200).send({ resultadofound })
 
 }
@@ -53,6 +66,7 @@ async function updateResultadoById (req:Request, res:Response) {
     })
     res.status(204).send({updateResultado})
 }
+
 
 async function deleteResultado (req:Request, res:Response) {
     
@@ -69,5 +83,6 @@ export default {
     getResultado,
     getResultadoByRut,
     deleteResultado,
-    updateResultadoById
+    updateResultadoById,
+    getResultadoById
 }
