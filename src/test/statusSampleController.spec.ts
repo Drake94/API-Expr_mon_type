@@ -30,6 +30,6 @@ describe('Prueba sobre api status', () => {
             expect(result.statusCode).toBe(500)
         })
 
-        
+
     })
 })

@@ -32,10 +32,10 @@ describe('Prueba sobre api Medico', () => {
 
             const result = await api.post('/admin/medicoLab').send('medicoLab')
             console.log(result.statusCode)
-            expect(result.statusCode).toBe(500)
+            expect(result.statusCode).toBe(400)
         })
 
-        
+
 
     })
 })

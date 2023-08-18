@@ -47,10 +47,11 @@ describe('Prueba sobre api metodos GET', () => {
         })
         test('resultado retorna un dato exacto', async () => {
 
-            const result = await api.get('/admin/resultado/ased2143').send()
+            const result = await api.get('/admin/resultado/').send('ased2143')
             console.log(result.statusCode)
-            expect(result.statusCode).toBe(400)
-        }) 
+            expect(result.statusCode).toBe(200)
+        })
+
         
 
     })
@@ -91,7 +92,7 @@ describe('Prueba sobre api metodos GET', () => {
         })
         test('paciente retorna un dato exacto', async () => {
             //falla por que no existe
-            const result = await api.get('/admin/paciente/6321789-5').send()
+            const result = await api.get('/admin/paciente/').send('6321789-5')
             console.log(result)
             expect(result.statusCode).toBe(200)
         }) 

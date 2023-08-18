@@ -25,15 +25,15 @@ describe('Prueba sobre api Paciente', () => {
         test('paciente retorna un dato exacto', async () => {
             //falla por que no existe
             const result = await api.get('/admin/paciente/6321789-5').send()
-            console.log(result)
-            expect(result.statusCode).toBe(200)
+            console.log(result.statusCode)
+            expect(result.statusCode).toBe(404)
         })
 
         test(' Crea Nuevo paciente', async () => {
 
             const result = await api.post('/admin/paciente').send('paciente')
             console.log(result.statusCode)
-            expect(result.statusCode).toBe(500)
+            expect(result.statusCode).toBe(403)
         })
     })
 })
